@@ -1,3 +1,35 @@
+<script setup lang="ts">
+    useHead({
+        title: "fuki's website",
+        meta: [
+            {
+            hid: "og:type",
+            property: "og:type",
+            content: "article",
+            },
+            {
+            hid: "og:title",
+            property: "og:title",
+            content: "fuki's website",
+            },
+            {
+            hid: "description",
+            name: "description",
+            content: "Hey 👋 I'm fuki",
+            },
+            {
+            hid: "og:description",
+            property: "og:description",
+            content: "Hey 👋 I'm fuki",
+            },
+            {
+            hid: "og:image",
+            property: "og:image",
+            content: "https://fuki.foo/_nuxt/assets/image/icon.webp",
+            },
+        ],
+    });
+</script>
 <template>
     <!-- Hero -->
     <section class="p-4 flex flex-col items-center">
