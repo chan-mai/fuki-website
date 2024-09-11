@@ -7,7 +7,8 @@ export default defineNuxtConfig({
   ssr: true,
 
   css: [
-    '~/assets/css/tailwindcss.css'
+    '~/assets/css/tailwindcss.css',
+    '~/assets/css/font.css'
   ],
 
   modules: [
