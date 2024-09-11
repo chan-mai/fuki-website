@@ -1,3 +1,36 @@
+<script>
+    useHead({
+        title: "fuki's website | Top",
+        meta: [
+            {
+            hid: "og:type",
+            property: "og:type",
+            content: "article",
+            },
+            {
+            hid: "og:title",
+            property: "og:title",
+            content: "fuki's website | Top",
+            },
+            {
+            hid: "description",
+            name: "description",
+            content: "Hey 👋 I'm fuki",
+            },
+            {
+            hid: "og:description",
+            property: "og:description",
+            content: "Hey 👋 I'm fuki",
+            },
+            {
+            hid: "og:image",
+            property: "og:image",
+            content: "@/assets/image/icon.webp",
+            },
+        ],
+    });
+</script>
+
 <template>
     <!-- Hero -->
     <section class="p-4 flex flex-col items-center">
@@ -32,13 +65,21 @@
             Provide customers with valuable inspiration through attractive illustrations.
         </p>
 
-        <a
-            href="{{ . }}"
+        <a  href="https://bsky.app/profile/fuuuuki.bsky.social"
             rel="noopener noreferrer"
             target="_blank"
             class="px-6 py-4 rounded-full font-semibold text-lg bg-black text-white hover:bg-gray-800 transition-colors dark:bg-white dark:text-black dark:hover:bg-gray-200"
-            >Talk to me</a
-        >
+            >Contact</a>
         </section>
     <!-- Hero End-->
+
+    <!-- Works -->
+    <div class="mt-5 mb-10">
+        <h2 class="flex justify-center items-center my-12 mx-2 text-2xl text-center relative before:content-[''] after:content-[''] before:inline-block after:inline-block before:mx-4 after:mx-4 before:w-2 after:w-2 before:h-4 after:h-4 before:text-2xl after:text-2xl before:mb-2 after:mt-2 before:border-t before:border-l after:border-r after:border-b before:border-gray-400 after:border-gray-400">
+        Works
+        </h2>
+        <Works />
+    </div>
+    <!-- Works End -->
+
 </template>

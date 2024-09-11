@@ -10,7 +10,9 @@
     "postinstall": "nuxt prepare"
   },
   "dependencies": {
+    "@nuxt/icon": "^1.5.1",
     "nuxt": "^3.13.0",
+    "nuxt-microcms-module": "^3.0.2",
     "vue": "latest",
     "vue-router": "latest"
   },

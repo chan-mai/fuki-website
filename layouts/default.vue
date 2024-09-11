@@ -1,7 +1,7 @@
 <template>
-    <div>
+    <div class="min-h-screen">
         <Header/>
-        <main style="border-bottom:solid 1px #CCC">
+        <main class="min-h-full" style="border-bottom:solid 1px #CCC">
             <NuxtPage />
         </main>
         <Footer/>
