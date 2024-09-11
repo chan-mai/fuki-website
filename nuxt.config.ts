@@ -41,6 +41,7 @@ export default defineNuxtConfig({
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap' },
+        { rel: "icon", type: "image/png", href: "/_nuxt/assets/image/icon.webp" },
       ],
       htmlAttrs: {
         lang: 'ja', 
