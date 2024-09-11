@@ -1,8 +1,10 @@
+import { createClient } from 'microcms-js-sdk';
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  ssr: false,
+  ssr: true,
 
   css: [
     '~/assets/css/tailwindcss.css'
@@ -32,5 +34,76 @@ export default defineNuxtConfig({
   runtimeConfig: {
     serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
     apiKey: process.env.MICROCMS_API_KEY
+  },
+
+  app: {
+    head: {
+      link: [
+        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
+        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap' },
+      ],
+      htmlAttrs: {
+        lang: 'ja', 
+        prefix: 'og: https://ogp.me/ns#'
+      },
+      meta: [
+        { charset: "utf-8" },
+        { name: "viewport", content: "width=device-width, initial-scale=1" },
+        { hid: 'description', name: "description", content: "Hey 👋 I‘m fuki" },
+        { hid: 'og:site_name', property: 'og:site_name', content: 'Fuki‘s website' },
+        { hid: 'og:title', property: 'og:title', content: 'Fuki‘s website' },
+        { hid: 'og:description', property: 'og:description', content: 'Hey 👋 I‘m fuki' },
+        { hid: 'og:image', property: 'og:image', content: 'https://fuki.foo/ogp.webp' },
+        { hid: 'og:type', property: 'og:type', content: 'website' },
+        { hid: 'og:url', property: 'og:url', content: 'https://fuki.foo/' },
+        { hid: 'og:site_name', property: 'og:site_name', content: 'Fuki‘s website' },
+        { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
+        { name: 'twitter:card', content: 'summary_large_image' },
+      ]
+    },
+  },
+
+  routeRules: {
+    "/": { prerender: true },
+    "/donate": { prerender: true },
+    "/faq": { prerender: true },
+    "/contact": { prerender: true },
+    "/more-info": { prerender: true },
+    "/content/doc/*": { prerender: true },
+    "/category/*": { prerender: true },
+    "/search/*": { ssr: true, headers: { 'Cache-Control': 'public, max-age=60, immutable' } },
+  },
+
+  nitro: {
+    prerender: {
+      autoSubfolderIndex: true,
+      crawlLinks: true,
+      routes: [],
+      failOnError: false,
+    }
+  },
+
+  hooks: {
+    async "nitro:config"(nitroConfig) {
+      if (nitroConfig.dev) {
+        return;
+      }
+      
+      const client = createClient({
+        serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
+        apiKey: process.env.MICROCMS_API_KEY!,
+      })
+      const res: any = await client.get({
+        endpoint: 'works',
+      });
+
+      if (nitroConfig.prerender?.routes === undefined) {
+        return;
+      }
+      
+      nitroConfig.prerender.routes = res.contents.map((mount: any) => {
+        return `/works/${mount.id}`;
+      });
+    },
   },
 })
