@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    let contents = ref([]);
+    let contents: any = ref([]);
 
     const respose: any = await useMicroCMSGetList({
         endpoint: 'works',
@@ -24,6 +24,7 @@
             class="rounded object-cover w-full h-full"
             loading="lazy"
             :src="content.image[0].url"
+            :alt="content.title"
             />
     </NuxtLink>
     </section>
