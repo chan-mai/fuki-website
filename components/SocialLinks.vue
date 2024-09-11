@@ -29,7 +29,7 @@
                     target="_blank"
                     rel="noopener"
                     :aria-label="account.name"
-                    class="p-2 inline-block rounded-full border border-gray-300 text-gray-300 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:border-gray-600 dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300"
+                    class="p-2 inline-block rounded-full border border-gray-300 text-gray-300 hover:text-gray-800 hover:border-gray-800 cursor-pointer transition-colors dark:border-gray-600 dark:text-gray-600 dark:hover:border-gray-300 dark:hover:text-gray-300 leading-none"
                 >
                 <Icon :name="account.icon" class="w-[20px] h-[20px]" />
             </a>
