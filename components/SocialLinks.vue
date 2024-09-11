@@ -7,7 +7,7 @@
      },
      {
         "name": "Misskey",
-        "url": "https://misskey.flowers/@fuki",
+        "url": "https://misskey.io/@Fuuuuuki",
         "icon": "simple-icons:misskey",
      },
      {
