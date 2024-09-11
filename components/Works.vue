@@ -1,18 +1,18 @@
 <script setup lang="ts">
     let contents = ref([]);
 
-    useMicroCMSGetList({
+    const respose: any = await useMicroCMSGetList({
         endpoint: 'works',
         queries: {
             orders: '-createdAt',
             limit: 100
         }
-    }).then((res: any) => {
-        // 順次contentsへpush
-        res.data.value.contents.forEach((content: any) => {
-            console.log(content);
-            contents.value.push(content);
-        });
+    });
+
+    // 順次contentsへpush
+    respose.data.value.contents.forEach((content: any) => {
+        // console.log(content);
+        contents.value.push(content);
     });
 
     console.log(contents.value);
