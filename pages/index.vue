@@ -25,7 +25,7 @@
             {
             hid: "og:image",
             property: "og:image",
-            content: "https://fuki.foo/_nuxt/assets/image/icon.webp",
+            content: "https://fuki.foo/icon.webp",
             },
         ],
     });

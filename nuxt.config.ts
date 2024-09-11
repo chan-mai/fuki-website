@@ -42,7 +42,7 @@ export default defineNuxtConfig({
       link: [
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap' },
-        { rel: "icon", type: "image/png", href: "/_nuxt/assets/image/icon.webp" },
+        { rel: "icon", type: "image/png", href: "/icon.webp" },
       ],
       htmlAttrs: {
         lang: 'ja', 
@@ -55,7 +55,7 @@ export default defineNuxtConfig({
         { hid: 'og:site_name', property: 'og:site_name', content: 'Fuki‘s website' },
         { hid: 'og:title', property: 'og:title', content: 'Fuki‘s website' },
         { hid: 'og:description', property: 'og:description', content: 'Hey 👋 I‘m fuki' },
-        { hid: 'og:image', property: 'og:image', content: 'https://fuki.foo/_nuxt/assets/image/icon.webp' },
+        { hid: 'og:image', property: 'og:image', content: 'https://fuki.foo/icon.webp' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
         { hid: 'og:url', property: 'og:url', content: 'https://fuki.foo/' },
         { hid: 'og:site_name', property: 'og:site_name', content: 'Fuki‘s website' },
