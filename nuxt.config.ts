@@ -53,7 +53,7 @@ export default defineNuxtConfig({
         { hid: 'og:site_name', property: 'og:site_name', content: 'Fuki‘s website' },
         { hid: 'og:title', property: 'og:title', content: 'Fuki‘s website' },
         { hid: 'og:description', property: 'og:description', content: 'Hey 👋 I‘m fuki' },
-        { hid: 'og:image', property: 'og:image', content: 'https://fuki.foo/ogp.webp' },
+        { hid: 'og:image', property: 'og:image', content: 'https://fuki.foo/_nuxt/assets/image/icon.webp' },
         { hid: 'og:type', property: 'og:type', content: 'website' },
         { hid: 'og:url', property: 'og:url', content: 'https://fuki.foo/' },
         { hid: 'og:site_name', property: 'og:site_name', content: 'Fuki‘s website' },
