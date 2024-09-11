@@ -65,13 +65,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/": { prerender: true },
-    "/donate": { prerender: true },
-    "/faq": { prerender: true },
-    "/contact": { prerender: true },
-    "/more-info": { prerender: true },
-    "/content/doc/*": { prerender: true },
-    "/category/*": { prerender: true },
-    "/search/*": { ssr: true, headers: { 'Cache-Control': 'public, max-age=60, immutable' } },
+    "/works/*": { prerender: true },
   },
 
   nitro: {
