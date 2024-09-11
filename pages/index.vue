@@ -1,36 +1,3 @@
-<script>
-    useHead({
-        title: "fuki's website | Top",
-        meta: [
-            {
-            hid: "og:type",
-            property: "og:type",
-            content: "article",
-            },
-            {
-            hid: "og:title",
-            property: "og:title",
-            content: "fuki's website | Top",
-            },
-            {
-            hid: "description",
-            name: "description",
-            content: "Hey 👋 I'm fuki",
-            },
-            {
-            hid: "og:description",
-            property: "og:description",
-            content: "Hey 👋 I'm fuki",
-            },
-            {
-            hid: "og:image",
-            property: "og:image",
-            content: "@/assets/image/icon.webp",
-            },
-        ],
-    });
-</script>
-
 <template>
     <!-- Hero -->
     <section class="p-4 flex flex-col items-center">
