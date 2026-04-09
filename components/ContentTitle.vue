@@ -1,14 +1,22 @@
 <script setup lang="ts">
     const props = defineProps<{
         title: string
+        index?: string
     }>();
-
-    const title = ref(props.title);
-
 </script>
 
 <template>
-    <h2 class="flex justify-center items-center my-12 mx-2 text-2xl text-center relative before:content-[''] after:content-[''] before:inline-block after:inline-block before:mx-4 after:mx-4 before:w-2 after:w-2 before:h-4 after:h-4 before:text-2xl after:text-2xl before:mb-2 after:mt-2 before:border-t before:border-l after:border-r after:border-b before:border-gray-400 after:border-gray-400">
-    {{ title }}
-    </h2>
+    <div class="flex flex-col items-center my-12 mx-2">
+        <div class="flex items-center gap-4 w-full max-w-5xl">
+            <div class="flex-1 border-t-2 border-dashed border-gray-300 dark:border-neutral-700"></div>
+            <div class="flex flex-col items-center">
+                <span v-if="index" class="text-xs font-mono tracking-widest text-rose-400 dark:text-rose-400 mb-1">{{ index }}</span>
+                <h2 class="text-2xl font-bold tracking-tight px-2">{{ title }}</h2>
+            </div>
+            <div class="flex-1 border-t-2 border-dashed border-gray-300 dark:border-neutral-700"></div>
+        </div>
+        <svg viewBox="0 0 200 12" xmlns="http://www.w3.org/2000/svg" class="w-32 mt-2 text-rose-200 dark:text-rose-800">
+            <path d="M0,6 C25,12 50,0 75,6 C100,12 125,0 150,6 C175,12 187,3 200,6" fill="none" stroke="currentColor" stroke-width="1.5"/>
+        </svg>
+    </div>
 </template>
