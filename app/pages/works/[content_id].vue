@@ -12,6 +12,10 @@
 
     const content = computed(() => worksData.value?.contents?.[0]);
 
+    if (!worksData.value?.contents?.length) {
+        throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
+    }
+
     useHead({
         title: computed(() => "fuki's website | " + (content.value?.title ?? '')),
         meta: [
