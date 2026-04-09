@@ -2,7 +2,7 @@ import { createClient } from 'microcms-js-sdk';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2024-04-03',
+  compatibilityDate: '2026-04-10',
   devtools: { enabled: true },
   ssr: true,
 

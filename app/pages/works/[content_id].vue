@@ -2,28 +2,28 @@
     const route = useRoute();
 
     let content_id: string = route.params?.content_id as string;
-    let content: any = ref([]);
 
-    const respose: any = await useMicroCMSGetObject({
+    const { data: worksData } = await useMicroCMSGetObject({
         endpoint: 'works',
         queries: {
             filters: `id[equals]${content_id}`
         }
     });
-    content.value = respose.data.value.contents[0];
+
+    const content = computed(() => worksData.value?.contents?.[0]);
 
     useHead({
-        title: "fuki's website | " + content.value.title,
+        title: computed(() => "fuki's website | " + (content.value?.title ?? '')),
         meta: [
             { hid: 'og:type',        property: 'og:type',        content: 'article' },
-            { hid: 'og:title',       property: 'og:title',       content: "fuki's website | " + content.value.title },
-            { hid: 'description',    name: 'description',        content: content.value.description },
-            { hid: 'og:description', property: 'og:description', content: content.value.description },
-            { hid: 'og:image',       property: 'og:image',       content: content.value.image[0].url },
+            { hid: 'og:title',       property: 'og:title',       content: computed(() => "fuki's website | " + (content.value?.title ?? '')) },
+            { hid: 'description',    name: 'description',        content: computed(() => content.value?.description ?? '') },
+            { hid: 'og:description', property: 'og:description', content: computed(() => content.value?.description ?? '') },
+            { hid: 'og:image',       property: 'og:image',       content: computed(() => content.value?.image?.[0]?.url ?? '') },
         ],
     });
 
-    const galleryImages = computed(() => content.value.image?.slice(1) ?? []);
+    const galleryImages = computed(() => content.value?.image?.slice(1) ?? []);
 </script>
 
 <template>
@@ -47,8 +47,8 @@
             <div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl bg-rose-50 dark:bg-neutral-800">
                 <img
                     class="w-full h-full object-cover"
-                    :src="content.image[0].url"
-                    :alt="content.title"
+                    :src="content?.image?.[0]?.url"
+                    :alt="content?.title"
                 />
             </div>
 
@@ -59,7 +59,7 @@
                 <span class="text-xs font-mono tracking-widest text-rose-400 mb-3">— illustration</span>
 
                 <!-- title -->
-                <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-2">{{ content.title }}</h1>
+                <h1 class="text-3xl md:text-4xl font-bold leading-tight mb-2">{{ content?.title }}</h1>
 
                 <!-- wavy underline -->
                 <svg viewBox="0 0 200 10" xmlns="http://www.w3.org/2000/svg" class="w-32 mb-8 text-rose-200 dark:text-rose-800">
@@ -68,13 +68,13 @@
 
                 <!-- description -->
                 <div class="border-l-2 border-rose-200 dark:border-rose-800 pl-4 mb-8">
-                    <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">{{ content.description }}</p>
+                    <p class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed">{{ content?.description }}</p>
                 </div>
 
                 <!-- external link -->
                 <a
-                    v-if="content.url"
-                    :href="content.url"
+                    v-if="content?.url"
+                    :href="content?.url"
                     target="_blank"
                     rel="noopener noreferrer"
                     class="inline-flex items-center gap-2 text-xs font-mono text-rose-400 hover:text-rose-600 dark:hover:text-rose-300 transition-colors"
@@ -83,7 +83,7 @@
                         class="px-3 py-1.5 border border-rose-200 dark:border-rose-800 hover:border-rose-400 transition-colors truncate max-w-xs"
                         style="clip-path: polygon(0 0, 88% 0, 100% 25%, 100% 100%, 12% 100%, 0 75%)"
                     >
-                        {{ content.url }}
+                        {{ content?.url }}
                     </span>
                 </a>
 
@@ -117,7 +117,7 @@
                         class="w-full h-full object-cover"
                         loading="lazy"
                         :src="img.url"
-                        :alt="content.title"
+                        :alt="content?.title"
                     />
                 </div>
             </div>

@@ -1,7 +1,5 @@
 <script setup lang="ts">
-    let contents: any = ref([]);
-
-    const respose: any = await useMicroCMSGetList({
+    const { data: worksData } = await useMicroCMSGetList({
         endpoint: 'works',
         queries: {
             orders: '-createdAt',
@@ -9,9 +7,7 @@
         }
     });
 
-    respose.data.value.contents.forEach((content: any) => {
-        contents.value.push(content);
-    });
+    const contents = computed(() => worksData.value?.contents ?? []);
 
     const staggerClass = (i: number) => {
         if (i % 3 === 1) return 'md:mt-[60px]';
