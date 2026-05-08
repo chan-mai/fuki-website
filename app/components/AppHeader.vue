@@ -112,6 +112,7 @@ router.afterEach(() => { isOpen.value = false })
 
                         <NuxtLink
                             v-for="account in [
+                                { name: 'X',       handle: '@fuuuuuki_0910', url: 'https://x.com/fuuuuuki_0910',                  icon: 'simple-icons:x'       },
                                 { name: 'Bluesky', handle: '@fuuuuki',        url: 'https://bsky.app/profile/fuuuuki.bsky.social', icon: 'simple-icons:bluesky' },
                                 { name: 'Misskey', handle: '@Fuuuuuki',       url: 'https://misskey.io/@Fuuuuuki',                  icon: 'simple-icons:misskey' },
                                 { name: 'Pixiv',   handle: 'user:32685096',   url: 'https://www.pixiv.net/users/32685096',          icon: 'simple-icons:pixiv'   },

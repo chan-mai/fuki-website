@@ -1,6 +1,13 @@
 <script setup lang="ts">
     const socialAccounts = ref([
      {
+        name: "X",
+        url: "https://x.com/fuuuuuki_0910",
+        icon: "simple-icons:x",
+        handle: "@fuuuuuki_0910",
+        description: "お問い合わせはこちら",
+     },
+     {
         name: "Bluesky",
         url: "https://bsky.app/profile/fuuuuki.bsky.social",
         icon: "simple-icons:bluesky",
