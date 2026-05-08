@@ -52,6 +52,7 @@
                     <p class="text-[10px] font-mono text-rose-400 tracking-[0.3em] uppercase mb-1">Links</p>
                     <a
                         v-for="link in [
+                            { label: 'X',        url: 'https://x.com/fuuuuuki_0910' },
                             { label: 'Bluesky',  url: 'https://bsky.app/profile/fuuuuki.bsky.social' },
                             { label: 'Misskey',  url: 'https://misskey.io/@Fuuuuuki' },
                             { label: 'Pixiv',    url: 'https://www.pixiv.net/users/32685096' },

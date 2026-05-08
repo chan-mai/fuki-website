@@ -81,7 +81,7 @@
         </ul>
 
         <a
-            href="https://bsky.app/profile/fuuuuki.bsky.social"
+            href="https://x.com/fuuuuuki_0910"
             rel="noopener noreferrer"
             target="_blank"
             class="px-6 py-3 font-semibold text-base bg-black text-white hover:bg-gray-800 transition-colors dark:bg-white dark:text-black dark:hover:bg-gray-200"
