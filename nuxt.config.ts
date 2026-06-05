@@ -78,6 +78,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/": { prerender: true },
+    "/contact": { prerender: true },
     "/works/*": { prerender: true },
   },
 
