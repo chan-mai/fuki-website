@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { SOCIAL_ACCOUNTS } from '#shared/constant';
+
 const gsap = useGsap();
 const CustomEase = useCustomEase();
 
@@ -242,12 +244,7 @@ onBeforeUnmount(() => {
 
                             <NuxtLink
                                 data-menu-stagger
-                                v-for="account in [
-                                    { name: 'X',       handle: '@fuuuuuki_0910', url: 'https://x.com/fuuuuuki_0910',                  icon: 'simple-icons:x'       },
-                                    { name: 'Bluesky', handle: '@fuuuuki',        url: 'https://bsky.app/profile/fuuuuki.bsky.social', icon: 'simple-icons:bluesky' },
-                                    { name: 'Misskey', handle: '@Fuuuuuki',       url: 'https://misskey.io/@Fuuuuuki',                  icon: 'simple-icons:misskey' },
-                                    { name: 'Pixiv',   handle: 'user:32685096',   url: 'https://www.pixiv.net/users/32685096',          icon: 'simple-icons:pixiv'   },
-                                ]"
+                                v-for="account in SOCIAL_ACCOUNTS"
                                 :key="account.name"
                                 :to="account.url"
                                 target="_blank"
@@ -263,7 +260,7 @@ onBeforeUnmount(() => {
                                 </div>
                                 <div class="leading-tight">
                                     <div class="text-sm font-bold text-neutral-800 group-hover:text-rose-600 transition-colors">{{ account.name }}</div>
-                                    <div class="text-[10px] font-mono text-rose-400">{{ account.handle }}</div>
+                                    <div class="text-[10px] font-mono text-rose-400">{{ account.shortHandle }}</div>
                                 </div>
                             </NuxtLink>
                         </div>

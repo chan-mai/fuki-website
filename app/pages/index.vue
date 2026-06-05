@@ -1,6 +1,8 @@
 <script setup lang="ts">
+    import { CONTACT_URL, SITE } from '#shared/constant';
+
     useHead({
-        title: "fuki's website",
+        title: SITE.name,
         meta: [
             {
             hid: "og:type",
@@ -10,22 +12,22 @@
             {
             hid: "og:title",
             property: "og:title",
-            content: "fuki's website",
+            content: SITE.name,
             },
             {
             hid: "description",
             name: "description",
-            content: "Hey 👋 I'm fuki",
+            content: SITE.description,
             },
             {
             hid: "og:description",
             property: "og:description",
-            content: "Hey 👋 I'm fuki",
+            content: SITE.description,
             },
             {
             hid: "og:image",
             property: "og:image",
-            content: "https://fuki.foo/icon.webp",
+            content: SITE.ogImage,
             },
         ],
     });
@@ -61,7 +63,7 @@
         </div>
 
         <p class="font-light text-center max-w-sm mb-5 text-gray-600 dark:text-neutral-400">
-            Provide customers with valuable inspiration through attractive illustrations.
+            {{ SITE.tagline }}
         </p>
 
         <!-- skill tags -->
@@ -81,7 +83,7 @@
         </ul>
 
         <a
-            href="https://x.com/fuuuuuki_0910"
+            :href="CONTACT_URL"
             rel="noopener noreferrer"
             target="_blank"
             class="px-6 py-3 font-semibold text-base bg-black text-white hover:bg-gray-800 transition-colors dark:bg-white dark:text-black dark:hover:bg-gray-200"

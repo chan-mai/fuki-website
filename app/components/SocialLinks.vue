@@ -1,34 +1,7 @@
 <script setup lang="ts">
-    const socialAccounts = ref([
-     {
-        name: "X",
-        url: "https://x.com/fuuuuuki_0910",
-        icon: "simple-icons:x",
-        handle: "@fuuuuuki_0910",
-        description: "お問い合わせはこちら",
-     },
-     {
-        name: "Bluesky",
-        url: "https://bsky.app/profile/fuuuuki.bsky.social",
-        icon: "simple-icons:bluesky",
-        handle: "@fuuuuki.bsky.social",
-        description: "日常やイラストを投稿しています",
-     },
-     {
-        name: "Misskey",
-        url: "https://misskey.io/@Fuuuuuki",
-        icon: "simple-icons:misskey",
-        handle: "@Fuuuuuki@misskey.io",
-        description: "近況やラフを気軽に共有",
-     },
-     {
-        name: "Pixiv",
-        url: "https://www.pixiv.net/users/32685096",
-        icon: "simple-icons:pixiv",
-        handle: "fuki / user:32685096",
-        description: "完成イラストを掲載しています",
-     },
-    ]);
+    import { SOCIAL_ACCOUNTS } from '#shared/constant';
+
+    const socialAccounts = SOCIAL_ACCOUNTS;
 
     const cardRadii = [
         '36px 8px 24px 8px / 8px 36px 8px 24px',
