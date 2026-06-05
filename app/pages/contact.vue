@@ -85,7 +85,7 @@
             data-c-item
             :href="twitter.url"
             target="_blank"
-            rel="noopener"
+            rel="me noopener"
             class="group inline-flex items-center gap-4 pl-6 pr-7 py-4 bg-black text-white hover:bg-gray-800 transition-colors"
             style="clip-path: polygon(0 0, 94% 0, 100% 22%, 100% 100%, 6% 100%, 0 78%)"
         >

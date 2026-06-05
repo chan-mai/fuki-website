@@ -1,6 +1,6 @@
 import process from 'node:process';
 import { createClient } from 'microcms-js-sdk';
-import { SITE } from './shared/constant';
+import { SITE, FEDIVERSE_CREATOR } from './shared/constant';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -72,6 +72,8 @@ export default defineNuxtConfig({
         { property: "og:url", content: SITE.url },
         { property: "og:locale", content: SITE.locale },
         { name: 'twitter:card', content: 'summary_large_image' },
+        // Mastodon等でリンク共有時に作者として表示される (Fediverseのauthor byline)
+        { name: 'fediverse:creator', content: FEDIVERSE_CREATOR },
       ]
     },
   },

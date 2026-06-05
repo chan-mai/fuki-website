@@ -21,10 +21,10 @@ export const SOCIAL_ACCOUNTS: readonly SocialAccount[] = [
     },
     {
         name: "Misskey",
-        url: "https://misskey.io/@Fuuuuuki",
+        url: "https://misskey.blue/@fuuuuuki",
         icon: "simple-icons:misskey",
-        handle: "@Fuuuuuki@misskey.io",
-        shortHandle: "@Fuuuuuki",
+        handle: "@Fuuuuuki@misskey.blue",
+        shortHandle: "@Fuuuuuki@misskey.blue",
         description: "近況やラフを気軽に共有",
     },
     {
@@ -39,6 +39,11 @@ export const SOCIAL_ACCOUNTS: readonly SocialAccount[] = [
 
 /** お問い合わせ先のURL */
 export const CONTACT_URL: string = SOCIAL_ACCOUNTS.find((a) => a.name === "Twitter")!.url;
+
+/**
+ * APアカウントのハンドル (fediverse:creator 用)
+ */
+export const FEDIVERSE_CREATOR: string = SOCIAL_ACCOUNTS.find((a) => a.name === "Misskey")!.handle;
 
 /** イラスト料金表 */
 export const PRICING: readonly PriceGroup[] = [

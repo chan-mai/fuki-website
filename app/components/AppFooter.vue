@@ -57,7 +57,7 @@
                         :key="account.name"
                         :to="account.url"
                         target="_blank"
-                        rel="noopener"
+                        rel="me noopener"
                         class="text-xs font-mono text-neutral-400 hover:text-rose-400 transition-colors tracking-wider"
                     >{{ account.name }} ↗</NuxtLink>
                 </div>

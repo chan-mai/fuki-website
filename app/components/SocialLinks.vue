@@ -28,7 +28,7 @@
                 <a
                     :href="account.url"
                     target="_blank"
-                    rel="noopener"
+                    rel="me noopener"
                     :aria-label="account.name"
                     class="group block"
                 >
