@@ -39,7 +39,7 @@
 
                 <!-- left: branding -->
                 <div>
-                    <p class="text-[11px] font-mono text-rose-400 tracking-widest mb-3">illustrator portfolio</p>
+                    <p class="text-[11px] font-mono text-rose-400 tracking-widest mb-3">Fuki portfolio</p>
                     <div
                         class="text-4xl font-black tracking-wider uppercase mb-4"
                         style="color: transparent; -webkit-text-stroke: 1.5px #fda4af; filter: drop-shadow(2px 1px 0 rgba(134,239,172,0.5)) drop-shadow(-2px -1px 0 rgba(251,113,133,0.4));"
@@ -52,14 +52,14 @@
                 <!-- right: links -->
                 <div class="flex flex-col gap-3 md:items-end">
                     <p class="text-[10px] font-mono text-rose-400 tracking-[0.3em] uppercase mb-1">Links</p>
-                    <a
+                    <NuxtLink
                         v-for="account in SOCIAL_ACCOUNTS"
                         :key="account.name"
-                        :href="account.url"
+                        :to="account.url"
                         target="_blank"
                         rel="noopener"
                         class="text-xs font-mono text-neutral-400 hover:text-rose-400 transition-colors tracking-wider"
-                    >{{ account.name }} ↗</a>
+                    >{{ account.name }} ↗</NuxtLink>
                 </div>
 
             </div>

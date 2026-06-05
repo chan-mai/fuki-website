@@ -8,9 +8,14 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
 
+  experimental: {
+    viewTransition: true,
+  },
+
   css: [
     '~/assets/css/tailwindcss.css',
-    '~/assets/css/font.css'
+    '~/assets/css/font.css',
+    'lenis/dist/lenis.css'
   ],
 
   modules: [
@@ -19,7 +24,7 @@ export default defineNuxtConfig({
   ],
 
   gsap: {
-    plugins: ['CustomEase'],
+    plugins: ['CustomEase', 'ScrollTrigger', 'SplitText'],
   },
 
   postcss: {
@@ -48,6 +53,8 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap' },
         { rel: "icon", type: "image/png", href: "/icon.webp" },
+        { rel: "dns-prefetch", href: "https://images.microcms-assets.io" },
+        { rel: "preconnect", href: "https://images.microcms-assets.io" },
       ],
       htmlAttrs: {
         lang: 'ja',

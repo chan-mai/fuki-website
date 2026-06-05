@@ -1,7 +1,7 @@
 // shared/constant.ts の構造化データに対応する型定義 (グローバル宣言)
 
 /** 公式SNSのプラットフォーム名 */
-type SocialPlatform = "X" | "Bluesky" | "Misskey" | "Pixiv";
+type SocialPlatform = "Twitter" | "Bluesky" | "Misskey" | "Pixiv";
 
 /** 公式SNSアカウント1件分の構造化データ */
 interface SocialAccount {

@@ -4,7 +4,7 @@
 /** 公式SNSアカウント一覧 (X / Bluesky / Misskey / Pixiv) */
 export const SOCIAL_ACCOUNTS: readonly SocialAccount[] = [
     {
-        name: "X",
+        name: "Twitter",
         url: "https://x.com/fuuuuuki_0910",
         icon: "simple-icons:x",
         handle: "@fuuuuuki_0910",
@@ -37,15 +37,15 @@ export const SOCIAL_ACCOUNTS: readonly SocialAccount[] = [
     },
 ];
 
-/** お問い合わせ先 (X) のURL */
-export const CONTACT_URL: string = SOCIAL_ACCOUNTS.find((a) => a.name === "X")!.url;
+/** お問い合わせ先 (Twitter) のURL */
+export const CONTACT_URL: string = SOCIAL_ACCOUNTS.find((a) => a.name === "Twitter")!.url;
 
 /** サイト全体のメタ情報 */
 export const SITE: SiteMeta = {
     name: "fuki's website",
     brand: "fuki",
     description: "Hey 👋 I'm fuki",
-    tagline: "Provide customers with valuable inspiration through attractive illustrations.",
+    tagline: "Cute, bold, and a little bit extra.",
     url: "https://fuki.foo/",
     ogImage: "https://fuki.foo/icon.webp",
     locale: "ja_JP",
