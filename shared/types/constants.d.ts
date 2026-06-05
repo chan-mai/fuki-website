@@ -19,6 +19,24 @@ interface SocialAccount {
     description: string;
 }
 
+/** 料金表の1項目 */
+interface PriceItem {
+    /** 項目名 */
+    label: string;
+    /** 金額 */
+    price: number;
+    /** 金額の前に付けるprefix */
+    prefix?: string;
+}
+
+/** 料金表のグループ (基本料金 / 追加料金 等) */
+interface PriceGroup {
+    /** グループ見出し */
+    title: string;
+    /** 項目一覧 */
+    items: readonly PriceItem[];
+}
+
 /** サイト全体のメタ情報 */
 interface SiteMeta {
     /** サイト名 (title / og:site_name) */

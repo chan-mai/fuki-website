@@ -1,5 +1,5 @@
 <script setup lang="ts">
-    import { CONTACT_URL, SITE } from '#shared/constant';
+    import { SITE } from '#shared/constant';
 
     useHead({
         title: SITE.name,
@@ -129,9 +129,7 @@
                 <!-- contact -->
                 <NuxtLink
                     data-hero-item
-                    :to="CONTACT_URL"
-                    rel="noopener noreferrer"
-                    target="_blank"
+                    to="/contact"
                     class="group inline-flex items-center gap-2.5 mt-8 px-7 py-3.5 font-semibold text-base bg-neutral-900 text-white hover:bg-rose-500 transition-colors dark:bg-white dark:text-black dark:hover:bg-rose-400 dark:hover:text-white"
                     style="clip-path: polygon(0 0, 92% 0, 100% 22%, 100% 100%, 8% 100%, 0 78%)"
                 >

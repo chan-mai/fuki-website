@@ -226,6 +226,12 @@ onBeforeUnmount(() => {
                                         class="block font-black text-4xl md:text-6xl tracking-wider uppercase text-neutral-800 hover:text-rose-400 transition-colors leading-tight"
                                     >WORKS</NuxtLink>
                                 </li>
+                                <li data-menu-stagger>
+                                    <NuxtLink
+                                        to="/contact"
+                                        class="block font-black text-4xl md:text-6xl tracking-wider uppercase text-neutral-800 hover:text-rose-400 transition-colors leading-tight"
+                                    >CONTACT</NuxtLink>
+                                </li>
                             </ul>
 
                             <!-- secondary -->
