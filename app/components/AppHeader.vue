@@ -255,7 +255,7 @@ onBeforeUnmount(() => {
                                 :key="account.name"
                                 :to="account.url"
                                 target="_blank"
-                                rel="noopener me"
+                                rel="me noopener"
                                 @click="close"
                                 class="flex items-center gap-3 group"
                             >
