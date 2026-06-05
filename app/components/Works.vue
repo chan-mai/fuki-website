@@ -1,4 +1,5 @@
 <script setup lang="ts">
+/*
     const { data: worksData } = await useMicroCMSGetList({
         endpoint: 'works',
         queries: {
@@ -7,7 +8,10 @@
         }
     });
 
-    const contents = computed(() => worksData.value?.contents ?? []);
+    const contents = computed(() => worksData.value?.contents ?? []);*/
+    const props = defineProps<{
+        works: Work[]
+    }>();
 
     const staggerClass = (i: number) => {
         if (i % 3 === 1) return 'md:mt-[60px]';
@@ -40,7 +44,7 @@
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
             <div
-                v-for="(content, i) in contents"
+                v-for="(content, i) in props.works"
                 :key="content.id"
                 :class="staggerClass(i)"
             >

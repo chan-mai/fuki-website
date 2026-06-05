@@ -3,46 +3,52 @@
 
     const socialAccounts = SOCIAL_ACCOUNTS;
 
-    const cardRadii = [
-        '36px 8px 24px 8px / 8px 36px 8px 24px',
-        '8px 36px 8px 24px / 24px 8px 36px 8px',
-        '24px 8px 36px 8px / 8px 24px 8px 36px',
-    ];
+    const num = (i: number) => String(i + 1).padStart(2, '0');
 
-    const iconRadii = [
-        '16px 4px 12px 4px / 4px 16px 4px 12px',
-        '4px 16px 4px 12px / 12px 4px 16px 4px',
-        '12px 4px 16px 4px / 4px 12px 4px 16px',
-    ];
+    const root = ref<HTMLElement | null>(null);
+    const gsap = useGsap();
+
+    useScrollReveal(root, (el) => {
+        gsap.from(el.querySelectorAll('li'), {
+            opacity: 0,
+            y: 28,
+            stagger: 0.1,
+            duration: 0.7,
+            ease: 'ease02',
+            scrollTrigger: { trigger: el, start: 'top 85%', once: true },
+        });
+    });
 </script>
 
 <template>
-    <section class="my-4 max-w-5xl mx-auto px-4">
-        <ul class="flex flex-col sm:flex-row gap-4">
-            <li
-                v-for="(account, i) in socialAccounts"
-                :key="account.name"
-                class="flex-1"
-            >
+    <!-- 罫線を使わず、余白と大きなタイポ階調で構造化 / ホバーは色のみ変化 (引き算) -->
+    <section ref="root" class="max-w-5xl mx-auto px-6 sm:px-10 py-8">
+        <ul class="grid sm:grid-cols-2 gap-x-12 lg:gap-x-20 gap-y-12 sm:gap-y-16">
+            <li v-for="(account, i) in socialAccounts" :key="account.name">
                 <a
                     :href="account.url"
                     target="_blank"
                     rel="noopener"
                     :aria-label="account.name"
-                    class="group flex gap-4 items-start p-4 border border-gray-200 dark:border-neutral-700 hover:border-rose-300 dark:hover:border-rose-700 transition-colors"
-                    :style="{ borderRadius: cardRadii[i] }"
+                    class="group block"
                 >
-                    <div
-                        class="shrink-0 w-10 h-10 flex items-center justify-center border border-rose-200 dark:border-rose-900 bg-rose-50 dark:bg-rose-950/30 group-hover:border-rose-400 dark:group-hover:border-rose-600 transition-colors"
-                        :style="{ borderRadius: iconRadii[i] }"
-                    >
-                        <Icon :name="account.icon" class="w-5 h-5 text-rose-400 dark:text-rose-400 group-hover:text-rose-600 dark:group-hover:text-rose-300 transition-colors" />
+                    <!-- index ＋ icon (極小ラベル) -->
+                    <div class="flex items-center justify-between mb-2.5">
+                        <span class="font-mono text-[11px] tracking-[0.3em] text-rose-400 tabular-nums">{{ num(i) }}</span>
+                        <Icon
+                            :name="account.icon"
+                            class="w-5 h-5 text-gray-400 transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500"
+                        />
                     </div>
-                    <div class="min-w-0">
-                        <div class="font-bold text-sm tracking-wide">{{ account.name }}</div>
-                        <div class="text-xs font-mono text-gray-500 dark:text-neutral-400 truncate mt-0.5">{{ account.handle }}</div>
-                        <div class="text-xs text-gray-400 dark:text-neutral-500 mt-1.5">{{ account.description }}</div>
+
+                    <!-- 主役: 大きな太字プラットフォーム名 -->
+                    <div class="font-black uppercase tracking-tight leading-[0.95] text-[2.5rem] sm:text-5xl text-gray-900 transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500">
+                        {{ account.name }}
                     </div>
+
+                    <!-- meta: 極小 mono (副) -->
+                    <div class="mt-3 font-mono text-xs text-gray-500 tracking-wide">{{ account.shortHandle }}</div>
+                    <div class="mt-1 text-xs text-gray-400 leading-relaxed">{{ account.description }}</div>
                 </a>
             </li>
         </ul>

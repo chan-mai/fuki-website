@@ -1,8 +1,7 @@
 <script setup lang="ts">
-import { SOCIAL_ACCOUNTS } from '#shared/constant';
+import { SOCIAL_ACCOUNTS, SITE } from '#shared/constant';
 
 const gsap = useGsap();
-const CustomEase = useCustomEase();
 
 const isOpen = ref(false);
 const close = () => { isOpen.value = false; };
@@ -11,11 +10,8 @@ const close = () => { isOpen.value = false; };
 const router = useRouter();
 router.afterEach(() => { isOpen.value = false; });
 
-// cubic-bezier(x1,y1,x2,y2) -> M0,0 C{x1},{y1} {x2},{y2} 1,1
-onMounted(() => {
-    CustomEase.create('ease01', 'M0,0 C0.27,0.76 0,1 1,1');  // バネぽいの
-    CustomEase.create('ease02', 'M0,0 C0.22,1 0.36,1 1,1');   // 収束/弾性
-});
+// ease01 / ease02 を登録 (useGsapEases.ts と共有)
+onMounted(() => registerGsapEases());
 
 // --- clip-path 定数 (前後で8頂点・% 統一 / GSAP が数値補間できる形) ---
 const BUTTON_SHAPE = 'polygon(0% 0%, 100% 0%, 100% 35%, 72% 35%, 72% 65%, 45% 65%, 45% 100%, 0% 100%)';
@@ -25,7 +21,13 @@ const prefersReduced = () =>
     typeof window !== 'undefined' && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 const lockScroll = (lock: boolean) => {
-    document.documentElement.style.overflow = lock ? 'hidden' : '';
+    const lenis = useNuxtApp().$lenis as { stop: () => void; start: () => void } | undefined;
+    if (lenis) {
+        if (lock) lenis.stop(); else lenis.start();
+    } else {
+        // reduced-motion 等で Lenis 無効時のフォールバック
+        document.documentElement.style.overflow = lock ? 'hidden' : '';
+    }
 };
 
 
@@ -203,9 +205,8 @@ onBeforeUnmount(() => {
 
                     <!-- tagline -->
                     <p data-menu-stagger class="text-[11px] font-mono text-rose-400 tracking-widest leading-loose mb-10">
-                        Illustrator Portfolio<br/>
-                        Provide customers with valuable inspiration<br/>
-                        through attractive illustrations.
+                        Fuki Portfolio<br/>
+                        {{ SITE.tagline }}<br/>
                     </p>
 
                     <div class="grid grid-cols-1 gap-12 items-start">
@@ -224,6 +225,12 @@ onBeforeUnmount(() => {
                                         to="/"
                                         class="block font-black text-4xl md:text-6xl tracking-wider uppercase text-neutral-800 hover:text-rose-400 transition-colors leading-tight"
                                     >WORKS</NuxtLink>
+                                </li>
+                                <li data-menu-stagger>
+                                    <NuxtLink
+                                        to="/contact"
+                                        class="block font-black text-4xl md:text-6xl tracking-wider uppercase text-neutral-800 hover:text-rose-400 transition-colors leading-tight"
+                                    >CONTACT</NuxtLink>
                                 </li>
                             </ul>
 

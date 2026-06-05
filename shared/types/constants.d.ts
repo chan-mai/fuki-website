@@ -1,7 +1,7 @@
 // shared/constant.ts の構造化データに対応する型定義 (グローバル宣言)
 
 /** 公式SNSのプラットフォーム名 */
-type SocialPlatform = "X" | "Bluesky" | "Misskey" | "Pixiv";
+type SocialPlatform = "Twitter" | "Bluesky" | "Misskey" | "Pixiv";
 
 /** 公式SNSアカウント1件分の構造化データ */
 interface SocialAccount {
@@ -17,6 +17,24 @@ interface SocialAccount {
     shortHandle: string;
     /** アカウントの用途・説明 */
     description: string;
+}
+
+/** 料金表の1項目 */
+interface PriceItem {
+    /** 項目名 */
+    label: string;
+    /** 金額 */
+    price: number;
+    /** 金額の前に付けるprefix */
+    prefix?: string;
+}
+
+/** 料金表のグループ (基本料金 / 追加料金 等) */
+interface PriceGroup {
+    /** グループ見出し */
+    title: string;
+    /** 項目一覧 */
+    items: readonly PriceItem[];
 }
 
 /** サイト全体のメタ情報 */

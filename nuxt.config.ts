@@ -1,3 +1,4 @@
+import process from 'node:process';
 import { createClient } from 'microcms-js-sdk';
 import { SITE } from './shared/constant';
 
@@ -7,19 +8,23 @@ export default defineNuxtConfig({
   devtools: { enabled: true },
   ssr: true,
 
+  experimental: {
+    viewTransition: true,
+  },
+
   css: [
     '~/assets/css/tailwindcss.css',
-    '~/assets/css/font.css'
+    '~/assets/css/font.css',
+    'lenis/dist/lenis.css'
   ],
 
   modules: [
     "@nuxt/icon",
-    "nuxt-microcms-module",
     "gsap-nuxt-module"
   ],
 
   gsap: {
-    plugins: ['CustomEase'],
+    plugins: ['CustomEase', 'ScrollTrigger', 'SplitText'],
   },
 
   postcss: {
@@ -33,14 +38,13 @@ export default defineNuxtConfig({
     provider: 'server',
   },
 
-  microCMS: {
-    serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-    apiKey: process.env.MICROCMS_API_KEY
-  },
-
   runtimeConfig: {
-    serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-    apiKey: process.env.MICROCMS_API_KEY
+    public: {
+      microcms: {
+        serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
+        apiKey: process.env.MICROCMS_API_KEY
+      }
+    }
   },
 
   app: {
@@ -49,6 +53,8 @@ export default defineNuxtConfig({
         { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
         { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap' },
         { rel: "icon", type: "image/png", href: "/icon.webp" },
+        { rel: "dns-prefetch", href: "https://images.microcms-assets.io" },
+        { rel: "preconnect", href: "https://images.microcms-assets.io" },
       ],
       htmlAttrs: {
         lang: 'ja',
@@ -57,14 +63,14 @@ export default defineNuxtConfig({
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { hid: 'description', name: "description", content: SITE.description },
-        { hid: 'og:site_name', property: 'og:site_name', content: SITE.name },
-        { hid: 'og:title', property: 'og:title', content: SITE.name },
-        { hid: 'og:description', property: 'og:description', content: SITE.description },
-        { hid: 'og:image', property: 'og:image', content: SITE.ogImage },
-        { hid: 'og:type', property: 'og:type', content: 'website' },
-        { hid: 'og:url', property: 'og:url', content: SITE.url },
-        { hid: 'og:locale', property: 'og:locale', content: SITE.locale },
+        { name: "description", content: SITE.description },
+        { property: "og:site_name", content: SITE.name },
+        { property: "og:title", content: SITE.name },
+        { property: "og:description", content: SITE.description },
+        { property: "og:image", content: SITE.ogImage },
+        { property: "og:type", content: 'website' },
+        { property: "og:url", content: SITE.url },
+        { property: "og:locale", content: SITE.locale },
         { name: 'twitter:card', content: 'summary_large_image' },
       ]
     },
@@ -72,6 +78,7 @@ export default defineNuxtConfig({
 
   routeRules: {
     "/": { prerender: true },
+    "/contact": { prerender: true },
     "/works/*": { prerender: true },
   },
 
@@ -95,7 +102,7 @@ export default defineNuxtConfig({
         serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
         apiKey: process.env.MICROCMS_API_KEY!,
       })
-      const res: any = await client.get({
+      const res: { contents: Work[] } = await client.get({
         endpoint: 'works',
       });
 
@@ -103,7 +110,7 @@ export default defineNuxtConfig({
         return;
       }
 
-      nitroConfig.prerender.routes = res.contents.map((mount: any) => {
+      nitroConfig.prerender.routes = res.contents.map((mount: Work) => {
         return `/works/${mount.id}`;
       });
     },
