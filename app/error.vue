@@ -39,7 +39,7 @@ const handleError = () => clearError({ redirect: '/' })
             </svg>
 
             <p class="text-sm font-mono text-gray-500 dark:text-neutral-400 mb-10">
-                ページが見つかりませんでした
+                {{ error?.status === 404 ? 'お探しのページは見つかりませんでした。' : (error?.error ?? 'エラーが発生しました。') }}
             </p>
 
             <!-- back button -->
