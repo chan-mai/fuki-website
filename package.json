@@ -2,8 +2,9 @@
   "name": "nuxt-app",
   "private": true,
   "type": "module",
+  "packageManager": "pnpm@10.33.4",
   "scripts": {
-    "build": "nuxt build",
+    "build": "nuxt build --preset cloudflare-module",
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
@@ -11,6 +12,7 @@
   },
   "dependencies": {
     "@nuxt/icon": "^1.10.3",
+    "gsap-nuxt-module": "^1.2.0",
     "nuxt": "^4.0.0",
     "nuxt-microcms-module": "^3.0.2",
     "vue": "^3.5.0",

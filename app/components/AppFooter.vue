@@ -1,4 +1,6 @@
 <script setup lang="ts">
+    import { SOCIAL_ACCOUNTS, SITE } from '#shared/constant';
+
     const nowYear: string = (new Date).getFullYear().toString();
 </script>
 
@@ -41,9 +43,9 @@
                     <div
                         class="text-4xl font-black tracking-wider uppercase mb-4"
                         style="color: transparent; -webkit-text-stroke: 1.5px #fda4af; filter: drop-shadow(2px 1px 0 rgba(134,239,172,0.5)) drop-shadow(-2px -1px 0 rgba(251,113,133,0.4));"
-                    >fuki</div>
+                    >{{ SITE.brand }}</div>
                     <p class="text-xs text-neutral-400 leading-relaxed max-w-xs">
-                        Provide customers with valuable inspiration<br/>through attractive illustrations.
+                        {{ SITE.tagline }}
                     </p>
                 </div>
 
@@ -51,18 +53,13 @@
                 <div class="flex flex-col gap-3 md:items-end">
                     <p class="text-[10px] font-mono text-rose-400 tracking-[0.3em] uppercase mb-1">Links</p>
                     <a
-                        v-for="link in [
-                            { label: 'X',        url: 'https://x.com/fuuuuuki_0910' },
-                            { label: 'Bluesky',  url: 'https://bsky.app/profile/fuuuuki.bsky.social' },
-                            { label: 'Misskey',  url: 'https://misskey.io/@Fuuuuuki' },
-                            { label: 'Pixiv',    url: 'https://www.pixiv.net/users/32685096' },
-                        ]"
-                        :key="link.label"
-                        :href="link.url"
+                        v-for="account in SOCIAL_ACCOUNTS"
+                        :key="account.name"
+                        :href="account.url"
                         target="_blank"
                         rel="noopener"
                         class="text-xs font-mono text-neutral-400 hover:text-rose-400 transition-colors tracking-wider"
-                    >{{ link.label }} ↗</a>
+                    >{{ account.name }} ↗</a>
                 </div>
 
             </div>
@@ -80,7 +77,7 @@
 
             <!-- copyright -->
             <p class="text-center text-[10px] font-mono text-neutral-600 tracking-widest">
-                © 2024 – {{ nowYear }} fuki · All rights reserved.
+                © {{ SITE.copyrightStartYear }} – {{ nowYear }} {{ SITE.brand }} · All rights reserved.
             </p>
 
         </div>

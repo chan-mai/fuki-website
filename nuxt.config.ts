@@ -1,4 +1,5 @@
 import { createClient } from 'microcms-js-sdk';
+import { SITE } from './shared/constant';
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -13,8 +14,13 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/icon",
-    "nuxt-microcms-module"
+    "nuxt-microcms-module",
+    "gsap-nuxt-module"
   ],
+
+  gsap: {
+    plugins: ['CustomEase'],
+  },
 
   postcss: {
     plugins: {
@@ -26,7 +32,7 @@ export default defineNuxtConfig({
   icon: {
     provider: 'server',
   },
-  
+
   microCMS: {
     serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
     apiKey: process.env.MICROCMS_API_KEY
@@ -45,21 +51,20 @@ export default defineNuxtConfig({
         { rel: "icon", type: "image/png", href: "/icon.webp" },
       ],
       htmlAttrs: {
-        lang: 'ja', 
+        lang: 'ja',
         prefix: 'og: https://ogp.me/ns#'
       },
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { hid: 'description', name: "description", content: "Hey 👋 I‘m fuki" },
-        { hid: 'og:site_name', property: 'og:site_name', content: 'Fuki‘s website' },
-        { hid: 'og:title', property: 'og:title', content: 'Fuki‘s website' },
-        { hid: 'og:description', property: 'og:description', content: 'Hey 👋 I‘m fuki' },
-        { hid: 'og:image', property: 'og:image', content: 'https://fuki.foo/icon.webp' },
+        { hid: 'description', name: "description", content: SITE.description },
+        { hid: 'og:site_name', property: 'og:site_name', content: SITE.name },
+        { hid: 'og:title', property: 'og:title', content: SITE.name },
+        { hid: 'og:description', property: 'og:description', content: SITE.description },
+        { hid: 'og:image', property: 'og:image', content: SITE.ogImage },
         { hid: 'og:type', property: 'og:type', content: 'website' },
-        { hid: 'og:url', property: 'og:url', content: 'https://fuki.foo/' },
-        { hid: 'og:site_name', property: 'og:site_name', content: 'Fuki‘s website' },
-        { hid: 'og:locale', property: 'og:locale', content: 'ja_JP' },
+        { hid: 'og:url', property: 'og:url', content: SITE.url },
+        { hid: 'og:locale', property: 'og:locale', content: SITE.locale },
         { name: 'twitter:card', content: 'summary_large_image' },
       ]
     },
@@ -71,6 +76,7 @@ export default defineNuxtConfig({
   },
 
   nitro: {
+    preset: 'cloudflare_module',
     prerender: {
       autoSubfolderIndex: true,
       crawlLinks: true,
@@ -84,7 +90,7 @@ export default defineNuxtConfig({
       if (nitroConfig.dev) {
         return;
       }
-      
+
       const client = createClient({
         serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
         apiKey: process.env.MICROCMS_API_KEY!,
@@ -96,7 +102,7 @@ export default defineNuxtConfig({
       if (nitroConfig.prerender?.routes === undefined) {
         return;
       }
-      
+
       nitroConfig.prerender.routes = res.contents.map((mount: any) => {
         return `/works/${mount.id}`;
       });

@@ -1,0 +1,16 @@
+{
+	"name": "fuki-website",
+	"main": ".output/server/index.mjs",
+	"compatibility_date": "2026-04-16",
+	"compatibility_flags": [
+		"nodejs_compat"
+	],
+	"workers_dev": true,
+	"assets": {
+		"directory": ".output/public",
+		"html_handling": "drop-trailing-slash"
+	},
+	"observability": {
+		"enabled": true
+	}
+}

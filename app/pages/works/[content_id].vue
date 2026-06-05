@@ -1,4 +1,6 @@
 <script setup lang="ts">
+    import { SITE } from '#shared/constant';
+
     const route = useRoute();
 
     let content_id: string = route.params?.content_id as string;
@@ -17,10 +19,10 @@
     }
 
     useHead({
-        title: computed(() => "fuki's website | " + (content.value?.title ?? '')),
+        title: computed(() => SITE.name + " | " + (content.value?.title ?? '')),
         meta: [
             { hid: 'og:type',        property: 'og:type',        content: 'article' },
-            { hid: 'og:title',       property: 'og:title',       content: computed(() => "fuki's website | " + (content.value?.title ?? '')) },
+            { hid: 'og:title',       property: 'og:title',       content: computed(() => SITE.name + " | " + (content.value?.title ?? '')) },
             { hid: 'description',    name: 'description',        content: computed(() => content.value?.description ?? '') },
             { hid: 'og:description', property: 'og:description', content: computed(() => content.value?.description ?? '') },
             { hid: 'og:image',       property: 'og:image',       content: computed(() => content.value?.image?.[0]?.url ?? '') },
