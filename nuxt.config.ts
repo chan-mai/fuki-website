@@ -13,8 +13,13 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/icon",
-    "nuxt-microcms-module"
+    "nuxt-microcms-module",
+    "gsap-nuxt-module"
   ],
+
+  gsap: {
+    plugins: ['CustomEase'],
+  },
 
   postcss: {
     plugins: {
