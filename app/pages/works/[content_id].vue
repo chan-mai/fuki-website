@@ -5,27 +5,31 @@
 
     let content_id: string = route.params?.content_id as string;
 
-    const { data: worksData } = await useMicroCMSGetObject({
-        endpoint: 'works',
-        queries: {
-            filters: `id[equals]${content_id}`
-        }
+    const client = useMicroCMSClient();
+    const { data: content } = await useAsyncData<Work>(`work-${content_id}`, async () => {
+        return await client.getListDetail<Work>({
+            endpoint: 'works',
+            contentId: content_id,
+            queries: {
+                depth: 2
+            } satisfies MicroCMSQueries,
+        });
+    }, {
+        server: true,
     });
 
-    const content = computed(() => worksData.value?.contents?.[0]);
+    console.log(content.value);
 
-    if (!worksData.value?.contents?.length) {
-        throw createError({ statusCode: 404, statusMessage: 'Page Not Found' })
-    }
+    if (!content.value?.id) throw createError({ statusCode: 404, statusMessage: 'Page Not Found' });
 
     useHead({
         title: computed(() => SITE.name + " | " + (content.value?.title ?? '')),
         meta: [
-            { hid: 'og:type',        property: 'og:type',        content: 'article' },
-            { hid: 'og:title',       property: 'og:title',       content: computed(() => SITE.name + " | " + (content.value?.title ?? '')) },
-            { hid: 'description',    name: 'description',        content: computed(() => content.value?.description ?? '') },
-            { hid: 'og:description', property: 'og:description', content: computed(() => content.value?.description ?? '') },
-            { hid: 'og:image',       property: 'og:image',       content: computed(() => content.value?.image?.[0]?.url ?? '') },
+            { property: 'og:type',        content: 'article' },
+            { property: 'og:title',       content: computed(() => SITE.name + " | " + (content.value?.title ?? '')) },
+            { name: 'description',        content: computed(() => content.value?.description ?? '') },
+            { property: 'og:description', content: computed(() => content.value?.description ?? '') },
+            { property: 'og:image',       content: computed(() => content.value?.image?.[0]?.url ?? '') },
         ],
     });
 
@@ -50,7 +54,7 @@
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start mb-16">
 
             <!-- hero image (クリップなし、丸角のみ) -->
-            <div class="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-xl bg-rose-50 dark:bg-neutral-800">
+            <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-rose-50 dark:bg-neutral-800">
                 <img
                     class="w-full h-full object-cover"
                     :src="content?.image?.[0]?.url"
@@ -113,7 +117,7 @@
                 <div
                     v-for="(img, i) in galleryImages"
                     :key="img.url"
-                    class="aspect-square overflow-hidden shadow-sm border border-gray-100 dark:border-neutral-800"
+                    class="aspect-square overflow-hidden border border-gray-100 dark:border-neutral-800"
                     :style="{
                         borderRadius: ['32px 8px 24px 8px / 8px 32px 8px 24px', '8px 32px 8px 24px / 24px 8px 32px 8px', '24px 8px 32px 8px / 8px 24px 8px 32px', '8px 24px 8px 32px / 32px 8px 24px 8px'][i % 4],
                         marginTop: i % 3 === 1 ? '24px' : i % 3 === 2 ? '48px' : '0'

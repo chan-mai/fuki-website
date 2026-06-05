@@ -4,35 +4,31 @@
     useHead({
         title: SITE.name,
         meta: [
-            {
-            hid: "og:type",
-            property: "og:type",
-            content: "article",
-            },
-            {
-            hid: "og:title",
-            property: "og:title",
-            content: SITE.name,
-            },
-            {
-            hid: "description",
-            name: "description",
-            content: SITE.description,
-            },
-            {
-            hid: "og:description",
-            property: "og:description",
-            content: SITE.description,
-            },
-            {
-            hid: "og:image",
-            property: "og:image",
-            content: SITE.ogImage,
-            },
+            { property: "og:type",        content: "article" },
+            { property: "og:title",       content: SITE.name },
+            { name: "description",        content: SITE.description },
+            { property: "og:description", content: SITE.description },
+            { property: "og:image",       content: SITE.ogImage },
         ],
     });
 
     const tags = ["イラスト", "キャラクターデザイン", "コンセプトアート", "デジタル彩色"];
+
+    const client = useMicroCMSClient();
+
+    const { data: worksData } = await useAsyncData<Work[]>('works', async () => {
+        const res = await client.getList<Work>({
+            endpoint: 'works',
+            queries: {
+                orders: '-createdAt',
+                limit: 100
+            } satisfies MicroCMSQueries
+        });
+        return res.contents;
+    }, {
+        default: () => [],
+        server: true,
+    });
 </script>
 <template>
     <!-- Hero -->
@@ -109,7 +105,7 @@
     <!-- Works -->
     <div class="mt-2 mb-10">
         <ContentTitle title="Works" index="— 02 —" />
-        <Works />
+        <Works :works="worksData" />
     </div>
 
 </template>

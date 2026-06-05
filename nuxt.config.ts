@@ -1,3 +1,4 @@
+import process from 'node:process';
 import { createClient } from 'microcms-js-sdk';
 import { SITE } from './shared/constant';
 
@@ -14,7 +15,6 @@ export default defineNuxtConfig({
 
   modules: [
     "@nuxt/icon",
-    "nuxt-microcms-module",
     "gsap-nuxt-module"
   ],
 
@@ -33,14 +33,13 @@ export default defineNuxtConfig({
     provider: 'server',
   },
 
-  microCMS: {
-    serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-    apiKey: process.env.MICROCMS_API_KEY
-  },
-
   runtimeConfig: {
-    serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-    apiKey: process.env.MICROCMS_API_KEY
+    public: {
+      microcms: {
+        serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
+        apiKey: process.env.MICROCMS_API_KEY
+      }
+    }
   },
 
   app: {
@@ -57,14 +56,14 @@ export default defineNuxtConfig({
       meta: [
         { charset: "utf-8" },
         { name: "viewport", content: "width=device-width, initial-scale=1" },
-        { hid: 'description', name: "description", content: SITE.description },
-        { hid: 'og:site_name', property: 'og:site_name', content: SITE.name },
-        { hid: 'og:title', property: 'og:title', content: SITE.name },
-        { hid: 'og:description', property: 'og:description', content: SITE.description },
-        { hid: 'og:image', property: 'og:image', content: SITE.ogImage },
-        { hid: 'og:type', property: 'og:type', content: 'website' },
-        { hid: 'og:url', property: 'og:url', content: SITE.url },
-        { hid: 'og:locale', property: 'og:locale', content: SITE.locale },
+        { name: "description", content: SITE.description },
+        { property: "og:site_name", content: SITE.name },
+        { property: "og:title", content: SITE.name },
+        { property: "og:description", content: SITE.description },
+        { property: "og:image", content: SITE.ogImage },
+        { property: "og:type", content: 'website' },
+        { property: "og:url", content: SITE.url },
+        { property: "og:locale", content: SITE.locale },
         { name: 'twitter:card', content: 'summary_large_image' },
       ]
     },
@@ -95,7 +94,7 @@ export default defineNuxtConfig({
         serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
         apiKey: process.env.MICROCMS_API_KEY!,
       })
-      const res: any = await client.get({
+      const res: { contents: Work[] } = await client.get({
         endpoint: 'works',
       });
 
@@ -103,7 +102,7 @@ export default defineNuxtConfig({
         return;
       }
 
-      nitroConfig.prerender.routes = res.contents.map((mount: any) => {
+      nitroConfig.prerender.routes = res.contents.map((mount: Work) => {
         return `/works/${mount.id}`;
       });
     },
