@@ -42,7 +42,7 @@ useScrollReveal(root, (el) => {
                 <!-- image area -->
                 <div class="relative aspect-[3/4]">
                     <div
-                        class="absolute inset-0 bg-white dark:bg-neutral-800 shadow-lg overflow-hidden"
+                        class="absolute inset-0 bg-white shadow-lg overflow-hidden"
                         style="clip-path: url(#works-notch-clip)"
                     >
                         <img
@@ -56,21 +56,21 @@ useScrollReveal(root, (el) => {
                         <div
                             data-curtain
                             aria-hidden="true"
-                            class="absolute inset-0 bg-rose-200 dark:bg-neutral-700"
+                            class="absolute inset-0 bg-rose-200"
                             style="transform: scaleY(0)"
                         ></div>
                     </div>
                 </div>
 
                 <!-- top-right notch: label -->
-                <div class="absolute top-0.5 right-4 max-w-[28%] truncate text-xs text-gray-500 dark:text-neutral-400 font-mono select-none z-10">
+                <div class="absolute top-0.5 right-4 max-w-[28%] truncate text-xs text-gray-500 font-mono select-none z-10">
                     {{ num(index) }}・{{ content.title }}
                 </div>
 
                 <!-- bottom-left: index folio (細アウトライン + ラベル) -->
                 <div data-folio class="absolute bottom-5 left-2 z-10 select-none leading-none">
                     <div class="flex items-center gap-1.5 mb-1.5">
-                        <span class="block h-px w-5 bg-rose-300 dark:bg-rose-700"></span>
+                        <span class="block h-px w-5 bg-rose-300"></span>
                         <span class="text-[10px] font-mono tracking-[0.35em] text-rose-400 uppercase">No.</span>
                     </div>
                     <span
@@ -82,8 +82,8 @@ useScrollReveal(root, (el) => {
 
             <!-- text below card -->
             <div class="mt-6 pl-2">
-                <h3 data-text class="text-xl font-bold mb-2 text-gray-900 dark:text-neutral-100">{{ content.title }}</h3>
-                <p v-if="content.description" data-text class="text-sm text-gray-600 dark:text-neutral-400 leading-relaxed line-clamp-3">{{ content.description }}</p>
+                <h3 data-text class="text-xl font-bold mb-2 text-gray-900">{{ content.title }}</h3>
+                <p v-if="content.description" data-text class="text-sm text-gray-600 leading-relaxed line-clamp-3">{{ content.description }}</p>
             </div>
         </NuxtLink>
     </div>

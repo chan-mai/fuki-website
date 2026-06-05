@@ -81,8 +81,8 @@
 
         <!-- decorative backdrop -->
         <div aria-hidden="true" class="pointer-events-none absolute inset-0">
-            <div class="absolute inset-y-0 left-[10%] w-px bg-rose-200/50 dark:bg-rose-900/30"></div>
-            <div class="absolute inset-y-0 right-[14%] w-px bg-rose-200/40 dark:bg-rose-900/20 hidden md:block"></div>
+            <div class="absolute inset-y-0 left-[10%] w-px bg-rose-200/50"></div>
+            <div class="absolute inset-y-0 right-[14%] w-px bg-rose-200/40 hidden md:block"></div>
         </div>
 
         <div class="relative max-w-6xl mx-auto px-6 md:px-10 grid md:grid-cols-12 gap-8 md:gap-6 items-center min-h-[80vh] pt-16 pb-12">
@@ -96,17 +96,17 @@
                 </div>
 
                 <!-- headline (Illustrator のみ斜線ハッチング塗り + 手描きラフ) -->
-                <h1 data-hero-title class="font-black tracking-tight leading-[0.92] text-[clamp(2.5rem,7vw,5.5rem)] text-neutral-900 dark:text-neutral-50">
+                <h1 data-hero-title class="font-black tracking-tight leading-[0.92] text-[clamp(2.5rem,7vw,5.5rem)] text-neutral-900">
                     <span class="block">meccha</span>
                     <span class="block">tsuyotsuyo</span>
                     <span data-hero-hatch class="hero-line ink-rose block">Illustrator</span>
                 </h1>
 
                 <!-- rule -->
-                <div data-hero-item class="mt-7 h-px max-w-md bg-gradient-to-r from-rose-300 via-rose-200 to-transparent dark:from-rose-700 dark:via-rose-800"></div>
+                <div data-hero-item class="mt-7 h-px max-w-md bg-gradient-to-r from-rose-300 via-rose-200 to-transparent"></div>
 
                 <!-- tagline -->
-                <p data-hero-item class="mt-5 max-w-md text-gray-600 dark:text-neutral-400 leading-relaxed">
+                <p data-hero-item class="mt-5 max-w-md text-gray-600 leading-relaxed">
                     {{ SITE.tagline }}
                 </p>
 
@@ -115,7 +115,7 @@
                     <li
                         v-for="(tag, i) in tags"
                         :key="tag"
-                        class="text-xs px-3 py-1 border border-rose-200 dark:border-rose-900 text-rose-400 dark:text-rose-400 font-mono bg-rose-50 dark:bg-rose-950/30"
+                        class="text-xs px-3 py-1 border border-rose-200 text-rose-400 font-mono bg-rose-50"
                         :style="i % 3 === 0
                             ? 'clip-path: polygon(0 0, 100% 0, 100% 70%, 85% 100%, 0 100%)'
                             : i % 3 === 1
@@ -130,7 +130,7 @@
                 <NuxtLink
                     data-hero-item
                     to="/contact"
-                    class="group inline-flex items-center gap-2.5 mt-8 px-7 py-3.5 font-semibold text-base bg-neutral-900 text-white hover:bg-rose-500 transition-colors dark:bg-white dark:text-black dark:hover:bg-rose-400 dark:hover:text-white"
+                    class="group inline-flex items-center gap-2.5 mt-8 px-7 py-3.5 font-semibold text-base bg-neutral-900 text-white hover:bg-rose-500 transition-colors"
                     style="clip-path: polygon(0 0, 92% 0, 100% 22%, 100% 100%, 8% 100%, 0 78%)"
                 >
                     Contact
@@ -145,18 +145,18 @@
                     <div
                         data-hero-deco
                         aria-hidden="true"
-                        class="absolute inset-0 translate-x-3.5 translate-y-3.5 border-2 border-dashed border-rose-300/70 dark:border-rose-800"
+                        class="absolute inset-0 translate-x-3.5 translate-y-3.5 border-2 border-dashed border-rose-300/70"
                         style="border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%"
                     ></div>
 
                     <!-- image blob -->
                     <div
                         data-hero-img
-                        class="relative w-full h-full p-1.5 border-2 border-dashed border-rose-200 dark:border-rose-900 bg-white dark:bg-neutral-900"
+                        class="relative w-full h-full p-1.5 border-2 border-dashed border-rose-200 bg-white"
                         style="border-radius: 62% 38% 46% 54% / 60% 44% 56% 40%"
                     >
                         <div
-                            class="w-full h-full bg-rose-50 dark:bg-neutral-800 overflow-hidden"
+                            class="w-full h-full bg-rose-50 overflow-hidden"
                             style="border-radius: 60% 40% 44% 56% / 58% 42% 58% 42%"
                         >
                             <img src="@/assets/image/icon.webp" class="w-full h-full object-cover" alt="fuki icon" />
@@ -167,10 +167,10 @@
                     <span data-hero-accent class="absolute -top-3 right-6 text-2xl text-rose-400 select-none">✦</span>
 
                     <!-- small decorative shapes -->
-                    <svg data-hero-deco aria-hidden="true" class="absolute -top-2 -left-3 w-7 h-7 text-rose-300 dark:text-rose-700" viewBox="0 0 24 24" fill="none">
+                    <svg data-hero-deco aria-hidden="true" class="absolute -top-2 -left-3 w-7 h-7 text-rose-300" viewBox="0 0 24 24" fill="none">
                         <path d="M12 4v16M4 12h16" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
                     </svg>
-                    <svg data-hero-deco aria-hidden="true" class="absolute bottom-2 -right-2 w-6 h-6 text-rose-300 dark:text-rose-700" viewBox="0 0 24 24" fill="none">
+                    <svg data-hero-deco aria-hidden="true" class="absolute bottom-2 -right-2 w-6 h-6 text-rose-300" viewBox="0 0 24 24" fill="none">
                         <path d="M12 5 L19 19 L5 19 Z" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
                     </svg>
                     <span data-hero-deco class="absolute bottom-8 -left-2 block w-2.5 h-2.5 rounded-full bg-rose-400"></span>
@@ -184,17 +184,17 @@
 
     <!-- wave divider -->
     <div class="mt-10">
-        <WavyDivider variant="up" color-class="text-gray-100 dark:text-neutral-900" />
+        <WavyDivider variant="up" color-class="text-gray-100" />
     </div>
 
     <!-- SocialLinks -->
-    <div class="bg-gray-100 dark:bg-neutral-900 py-2">
+    <div class="bg-gray-100 py-2">
         <ContentTitle title="SocialLinks" index="— 01 —" />
         <SocialLinks />
     </div>
 
     <!-- wave divider (flipped) -->
-    <WavyDivider color-class="text-gray-100 dark:text-neutral-900" />
+    <WavyDivider color-class="text-gray-100" />
 
     <!-- Works -->
     <div class="mt-2 mb-10">

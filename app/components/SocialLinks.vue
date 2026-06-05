@@ -37,18 +37,18 @@
                         <span class="font-mono text-[11px] tracking-[0.3em] text-rose-400 tabular-nums">{{ num(i) }}</span>
                         <Icon
                             :name="account.icon"
-                            class="w-5 h-5 text-gray-400 dark:text-neutral-500 transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500 dark:group-hover:text-rose-400"
+                            class="w-5 h-5 text-gray-400 transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500"
                         />
                     </div>
 
                     <!-- 主役: 大きな太字プラットフォーム名 -->
-                    <div class="font-black uppercase tracking-tight leading-[0.95] text-[2.5rem] sm:text-5xl text-gray-900 dark:text-neutral-100 transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500 dark:group-hover:text-rose-400">
+                    <div class="font-black uppercase tracking-tight leading-[0.95] text-[2.5rem] sm:text-5xl text-gray-900 transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500">
                         {{ account.name }}
                     </div>
 
                     <!-- meta: 極小 mono (副) -->
-                    <div class="mt-3 font-mono text-xs text-gray-500 dark:text-neutral-400 tracking-wide">{{ account.shortHandle }}</div>
-                    <div class="mt-1 text-xs text-gray-400 dark:text-neutral-500 leading-relaxed">{{ account.description }}</div>
+                    <div class="mt-3 font-mono text-xs text-gray-500 tracking-wide">{{ account.shortHandle }}</div>
+                    <div class="mt-1 text-xs text-gray-400 leading-relaxed">{{ account.description }}</div>
                 </a>
             </li>
         </ul>

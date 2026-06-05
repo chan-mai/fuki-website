@@ -69,13 +69,13 @@
 <template>
     <!-- Header -->
     <section ref="header" class="contact-cloak pt-20 pb-10 px-4 flex flex-col items-center text-center">
-        <span data-c-eyebrow class="text-xs font-mono tracking-[0.35em] text-rose-400 dark:text-rose-400 mb-3">— CONTACT —</span>
+        <span data-c-eyebrow class="text-xs font-mono tracking-[0.35em] text-rose-400 mb-3">— CONTACT —</span>
         <h1 data-c-title class="overflow-hidden text-4xl md:text-6xl font-black tracking-tight mb-3 leading-[1.1]">Contact</h1>
-        <svg data-c-underline viewBox="0 0 200 12" xmlns="http://www.w3.org/2000/svg" class="w-28 mb-6 text-rose-300 dark:text-rose-700">
+        <svg data-c-underline viewBox="0 0 200 12" xmlns="http://www.w3.org/2000/svg" class="w-28 mb-6 text-rose-300">
             <path d="M0,6 C25,12 50,0 75,6 C100,12 125,0 150,6 C175,12 187,3 200,6" fill="none" stroke="currentColor" stroke-width="1.5"/>
         </svg>
 
-        <p data-c-item class="max-w-md text-gray-600 dark:text-neutral-400 leading-relaxed mb-8">
+        <p data-c-item class="max-w-md text-gray-600 leading-relaxed mb-8">
             イラストのご依頼・ご相談はお気軽にどうぞ。<br/>
             ご連絡はTwitter(自称𝕏)のDMが確実です。
         </p>
@@ -86,7 +86,7 @@
             :href="twitter.url"
             target="_blank"
             rel="noopener"
-            class="group inline-flex items-center gap-4 pl-6 pr-7 py-4 bg-black text-white dark:bg-white dark:text-black hover:bg-gray-800 dark:hover:bg-gray-200 transition-colors"
+            class="group inline-flex items-center gap-4 pl-6 pr-7 py-4 bg-black text-white hover:bg-gray-800 transition-colors"
             style="clip-path: polygon(0 0, 94% 0, 100% 22%, 100% 100%, 6% 100%, 0 78%)"
         >
             <Icon name="simple-icons:x" class="w-6 h-6 shrink-0" />
@@ -101,10 +101,10 @@
     </section>
 
     <!-- wave divider -->
-    <WavyDivider variant="up" color-class="text-gray-100 dark:text-neutral-900" />
+    <WavyDivider variant="up" color-class="text-gray-100" />
 
     <!-- Price -->
-    <div ref="priceSection" class="bg-gray-100 dark:bg-neutral-900 pt-2 pb-12">
+    <div ref="priceSection" class="bg-gray-100 pt-2 pb-12">
         <ContentTitle title="料金表" index="— Price —" />
 
         <section class="max-w-5xl mx-auto px-4">
@@ -112,14 +112,14 @@
                 <div
                     v-for="(group, gi) in PRICING"
                     :key="group.title"
-                    class="relative bg-rose-100/70 dark:bg-rose-950/30 p-2"
+                    class="relative bg-rose-100/70 p-2"
                     :style="{ borderRadius: gi % 2 === 0 ? '30px 10px 30px 10px / 10px 30px 10px 30px' : '10px 30px 10px 30px / 30px 10px 30px 10px' }"
                 >
                     <div
-                        class="h-full bg-white/85 dark:bg-neutral-900/70 px-6 py-6 md:px-8"
+                        class="h-full bg-white/85 px-6 py-6 md:px-8"
                         :style="{ borderRadius: gi % 2 === 0 ? '26px 8px 26px 8px / 8px 26px 8px 26px' : '8px 26px 8px 26px / 26px 8px 26px 8px' }"
                     >
-                        <h3 data-price-head class="flex items-center gap-2 text-rose-400 dark:text-rose-300 font-bold tracking-wide mb-5">
+                        <h3 data-price-head class="flex items-center gap-2 text-rose-400 font-bold tracking-wide mb-5">
                             <span class="w-1.5 h-1.5 rounded-full bg-rose-400"></span>
                             {{ group.title }}
                         </h3>
@@ -130,9 +130,9 @@
                                 data-price-row
                                 class="flex items-baseline gap-3"
                             >
-                                <span class="shrink-0 text-sm md:text-base text-gray-700 dark:text-neutral-200">{{ item.label }}</span>
-                                <span class="flex-1 -translate-y-1 border-b border-dotted border-rose-300/70 dark:border-rose-700/60"></span>
-                                <span class="whitespace-nowrap font-mono font-bold text-rose-500 dark:text-rose-300">{{ item.prefix }}¥{{ item.price }}</span>
+                                <span class="shrink-0 text-sm md:text-base text-gray-700">{{ item.label }}</span>
+                                <span class="flex-1 -translate-y-1 border-b border-dotted border-rose-300/70"></span>
+                                <span class="whitespace-nowrap font-mono font-bold text-rose-500">{{ item.prefix }}¥{{ item.price }}</span>
                             </li>
                         </ul>
                     </div>
@@ -142,7 +142,7 @@
             <!-- note -->
             <div
                 data-price-note
-                class="mt-6 max-w-3xl mx-auto p-4 border border-dashed border-rose-300 dark:border-rose-800 bg-rose-50/70 dark:bg-rose-950/20 text-xs leading-relaxed text-rose-500 dark:text-rose-300"
+                class="mt-6 max-w-3xl mx-auto p-4 border border-dashed border-rose-300 bg-rose-50/70 text-xs leading-relaxed text-rose-500"
                 style="border-radius: 18px 6px 18px 6px / 6px 18px 6px 18px"
             >
                 <p v-for="(line, i) in PRICING_NOTE" :key="i" class="flex gap-1.5">
@@ -169,7 +169,7 @@
     </div>
 
     <!-- wave divider (flipped) -->
-    <WavyDivider color-class="text-gray-100 dark:text-neutral-900" />
+    <WavyDivider color-class="text-gray-100" />
 </template>
 
 <style scoped>

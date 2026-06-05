@@ -12,7 +12,7 @@ const props = withDefaults(defineProps<{
     colorClass?: string
 }>(), {
     variant: 'down',
-    colorClass: 'text-gray-100 dark:text-neutral-900'
+    colorClass: 'text-gray-100'
 })
 
 const path = computed(() => {
