@@ -91,7 +91,7 @@
         <div class="grid md:grid-cols-2 gap-10 md:gap-16 items-start mb-16">
 
             <!-- hero image (index カードと view-transition で morph) -->
-            <div class="relative aspect-[3/4] rounded-2xl overflow-hidden bg-rose-50">
+            <div class="relative aspect-3/4 rounded-2xl overflow-hidden bg-rose-50">
                 <img
                     class="w-full h-full rounded-2xl object-cover"
                     :src="content?.image?.[0]?.url"
