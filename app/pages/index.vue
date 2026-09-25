@@ -103,7 +103,7 @@
                 </h1>
 
                 <!-- rule -->
-                <div data-hero-item class="mt-7 h-px max-w-md bg-gradient-to-r from-rose-300 via-rose-200 to-transparent"></div>
+                <div data-hero-item class="mt-7 h-px max-w-md bg-linear-to-r from-rose-300 via-rose-200 to-transparent"></div>
 
                 <!-- tagline -->
                 <p data-hero-item class="mt-5 max-w-md text-gray-600 leading-relaxed">

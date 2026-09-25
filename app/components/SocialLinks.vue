@@ -37,12 +37,12 @@
                         <span class="font-mono text-[11px] tracking-[0.3em] text-rose-400 tabular-nums">{{ num(i) }}</span>
                         <Icon
                             :name="account.icon"
-                            class="w-5 h-5 text-gray-400 transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500"
+                            class="w-5 h-5 text-gray-400 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500"
                         />
                     </div>
 
                     <!-- 主役: 大きな太字プラットフォーム名 -->
-                    <div class="font-black uppercase tracking-tight leading-[0.95] text-[2.5rem] sm:text-5xl text-gray-900 transition-colors duration-[400ms] ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500">
+                    <div class="font-black uppercase tracking-tight leading-[0.95] text-[2.5rem] sm:text-5xl text-gray-900 transition-colors duration-400 ease-[cubic-bezier(0.22,1,0.36,1)] group-hover:text-rose-500">
                         {{ account.name }}
                     </div>
 

@@ -1,10 +1,11 @@
-import process from 'node:process';
-import { createClient } from 'microcms-js-sdk';
-import { SITE, FEDIVERSE_CREATOR } from './shared/constant';
+import process from "node:process";
+import { createClient } from "microcms-js-sdk";
+import tailwindcss from "@tailwindcss/vite";
+import { SITE, FEDIVERSE_CREATOR } from "./shared/constant";
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  compatibilityDate: '2026-04-10',
+  compatibilityDate: "2026-04-10",
   devtools: { enabled: true },
   ssr: true,
 
@@ -13,52 +14,49 @@ export default defineNuxtConfig({
   },
 
   css: [
-    '~/assets/css/tailwindcss.css',
-    '~/assets/css/font.css',
-    'lenis/dist/lenis.css'
+    "~/assets/css/tailwindcss.css",
+    "~/assets/css/font.css",
+    "lenis/dist/lenis.css",
   ],
 
-  modules: [
-    "@nuxt/icon",
-    "gsap-nuxt-module"
-  ],
+  modules: ["@nuxt/icon", "gsap-nuxt-module"],
 
   gsap: {
-    plugins: ['CustomEase', 'ScrollTrigger', 'SplitText'],
+    plugins: ["CustomEase", "ScrollTrigger", "SplitText"],
   },
 
-  postcss: {
-    plugins: {
-      tailwindcss: {},
-      autoprefixer: {},
-    },
+  vite: {
+    plugins: [tailwindcss()],
   },
 
   icon: {
-    provider: 'server',
+    provider: "server",
   },
 
   runtimeConfig: {
     public: {
       microcms: {
         serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
-        apiKey: process.env.MICROCMS_API_KEY
-      }
-    }
+        apiKey: process.env.MICROCMS_API_KEY,
+      },
+    },
   },
 
   app: {
     head: {
       link: [
-        { rel: 'preconnect', href: 'https://fonts.googleapis.com' },
-        { rel: 'stylesheet', href: 'https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap' },
+        { rel: "preconnect", href: "https://fonts.googleapis.com" },
+        {
+          rel: "stylesheet",
+          href: "https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100..900&display=swap",
+        },
         { rel: "icon", type: "image/png", href: "/fuki.png" },
         { rel: "dns-prefetch", href: "https://images.microcms-assets.io" },
         { rel: "preconnect", href: "https://images.microcms-assets.io" },
       ],
       htmlAttrs: {
-        lang: 'ja',
-        prefix: 'og: https://ogp.me/ns#'
+        lang: "ja",
+        prefix: "og: https://ogp.me/ns#",
       },
       meta: [
         { charset: "utf-8" },
@@ -68,13 +66,13 @@ export default defineNuxtConfig({
         { property: "og:title", content: SITE.name },
         { property: "og:description", content: SITE.description },
         { property: "og:image", content: SITE.ogImage },
-        { property: "og:type", content: 'website' },
+        { property: "og:type", content: "website" },
         { property: "og:url", content: SITE.url },
         { property: "og:locale", content: SITE.locale },
-        { name: 'twitter:card', content: 'summary_large_image' },
+        { name: "twitter:card", content: "summary_large_image" },
         // Mastodon等でリンク共有時に作者として表示される (Fediverseのauthor byline)
-        { name: 'fediverse:creator', content: FEDIVERSE_CREATOR },
-      ]
+        { name: "fediverse:creator", content: FEDIVERSE_CREATOR },
+      ],
     },
   },
 
@@ -85,13 +83,13 @@ export default defineNuxtConfig({
   },
 
   nitro: {
-    preset: 'cloudflare_module',
+    preset: "cloudflare_module",
     prerender: {
       autoSubfolderIndex: true,
       crawlLinks: true,
       routes: [],
       failOnError: false,
-    }
+    },
   },
 
   hooks: {
@@ -103,9 +101,9 @@ export default defineNuxtConfig({
       const client = createClient({
         serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN!,
         apiKey: process.env.MICROCMS_API_KEY!,
-      })
+      });
       const res: { contents: Work[] } = await client.get({
-        endpoint: 'works',
+        endpoint: "works",
       });
 
       if (nitroConfig.prerender?.routes === undefined) {
@@ -117,4 +115,4 @@ export default defineNuxtConfig({
       });
     },
   },
-})
+});

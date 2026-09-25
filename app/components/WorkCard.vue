@@ -40,7 +40,7 @@ useScrollReveal(root, (el) => {
         >
             <div class="relative">
                 <!-- image area -->
-                <div class="relative aspect-[3/4]">
+                <div class="relative aspect-3/4">
                     <div
                         class="absolute inset-0 bg-white shadow-lg overflow-hidden"
                         style="clip-path: url(#works-notch-clip)"
