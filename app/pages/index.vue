@@ -159,7 +159,7 @@
                             class="w-full h-full bg-rose-50 overflow-hidden"
                             style="border-radius: 60% 40% 44% 56% / 58% 42% 58% 42%"
                         >
-                            <img src="@/assets/image/icon.webp" class="w-full h-full object-cover" alt="fuki icon" />
+                            <img src="@/assets/image/fuki.png" class="w-full h-full object-cover" alt="fuki icon" />
                         </div>
                     </div>
 

@@ -81,7 +81,7 @@ export const SITE: SiteMeta = {
     description: "Hey 👋 I'm fuki",
     tagline: "Cute, bold, and a little bit extra.",
     url: "https://fuki.foo/",
-    ogImage: "https://fuki.foo/icon.webp",
+    ogImage: "https://fuki.foo/fuki.png",
     locale: "ja_JP",
     copyrightStartYear: 2024,
 };
